@@ -1,0 +1,7 @@
+{
+    "textBoxScreen": {
+        "name": "Name",
+        "email": "Email",
+        "currentAddress": "Current Address"
+    }
+}

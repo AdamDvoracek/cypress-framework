@@ -1,0 +1,16 @@
+{
+  "name": "cypress-framework",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "cypress": "^10.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "npx cypress open",
+    "run": "npx cypress run --spec 'cypress/e2e/elements.cy.js'"
+  },
+  "author": "",
+  "license": "ISC"
+}
