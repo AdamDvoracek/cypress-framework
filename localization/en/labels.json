@@ -1,0 +1,11 @@
+{
+    "columns": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "age": "Age",
+        "email": "Email",
+        "salary": "Salary",
+        "department": "Department",
+        "action" : "Action"
+    }
+}

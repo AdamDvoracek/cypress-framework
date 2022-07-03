@@ -3,6 +3,8 @@ import data from '../fixtures/data.json'
 import labels from '../labels/en/labels.json'
 import checkBox from '../page-objects/checkBox'
 import radioButton from '../page-objects/radioButton'
+import localization from '../../localization/en/labels.json'
+import { expect } from 'chai'
 
 describe('Interact with all types of elements', () => {
   it('Interact with text-box', () => {
@@ -97,7 +99,7 @@ describe('Interact with all types of elements', () => {
   })
 
   // Now using Cypress commands instead of POM
-  it('Interact with web table', () => {
+  it.only('Interact with web table', () => {
 
     cy.visit('/' + '/webtables')
 
@@ -119,5 +121,12 @@ describe('Interact with all types of elements', () => {
         .children('[role=gridcell]').eq(i)
           .should('have.text', Object.values(row)[i])
     }
+
+    // Load localization data and verify column labels
+    cy.get('[role=columnheader]').eq(0)
+      .should('have.text', localization.columns.firstName)
+      cy.get('[role=columnheader]').eq(1)
+      .should('have.text', localization.columns.lastName)
+
   })
 })
