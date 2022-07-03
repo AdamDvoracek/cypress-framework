@@ -95,4 +95,29 @@ describe('Interact with all types of elements', () => {
     answer.forEach(verifyAnswer)
 
   })
+
+  // Now using Cypress commands instead of POM
+  it('Interact with web table', () => {
+
+    cy.visit('/' + '/webtables')
+
+    // Using getGridCell with args (y = row, x = column)
+    cy.getGridCell(1,1).should('have.text', 'Cantrell')
+
+    // Now verify whole grid row
+    let row = {
+      'firstName': 'Cierra',
+      'lastName': 'Vega',
+      'age': '39',
+      'email': 'cierra@example.com',
+      'salary': '10000',
+      'department': 'Insurance'
+    }
+
+    for (let i = 0; i < Object.keys(row).length; i++) {
+      cy.get('[role=rowgroup]').children('[role=row]').eq(0)
+        .children('[role=gridcell]').eq(i)
+          .should('have.text', Object.values(row)[i])
+    }
+  })
 })
