@@ -4,7 +4,6 @@ import labels from '../labels/en/labels.json'
 import checkBox from '../page-objects/checkBox'
 import radioButton from '../page-objects/radioButton'
 import localization from '../../localization/en/labels.json'
-import { expect } from 'chai'
 
 describe('Interact with all types of elements', () => {
   it('Interact with text-box', () => {
@@ -65,7 +64,8 @@ describe('Interact with all types of elements', () => {
     
     cy.visit('/' + '/radio-button')
 
-    cy.byCss('mb-3').should('have.text', 'Do you like the site?')
+    cy.byCss('mb-3')
+      .should('have.text', 'Do you like the site?')
 
     // Click force when element is radio button
     cy.get('[id=yesRadio]').first().click({force: true})
@@ -84,13 +84,13 @@ describe('Interact with all types of elements', () => {
         cy.once('fail', () => {
           cy.get('[id=noRadio]')
             .should('have.class', 'custom-control-label disabled')
-            done()
+        done()
         })
       }
       else {
         radioButton.checkRadioButton(label)
         cy.get('.mt-3')
-        .should('have.text', `You have selected ${label}`)
+          .should('have.text', `You have selected ${label}`)
       }
     }
 
@@ -99,12 +99,13 @@ describe('Interact with all types of elements', () => {
   })
 
   // Now using Cypress commands instead of POM
-  it.only('Interact with web table', () => {
+  it('Interact with web table', () => {
 
     cy.visit('/' + '/webtables')
 
     // Using getGridCell with args (y = row, x = column)
-    cy.getGridCell(1,1).should('have.text', 'Cantrell')
+    cy.getGridCell(1,1)
+      .should('have.text', 'Cantrell')
 
     // Now verify whole grid row
     let row = {
@@ -125,7 +126,7 @@ describe('Interact with all types of elements', () => {
     // Load localization data and verify column labels
     cy.get('[role=columnheader]').eq(0)
       .should('have.text', localization.columns.firstName)
-      cy.get('[role=columnheader]').eq(1)
+    cy.get('[role=columnheader]').eq(1)
       .should('have.text', localization.columns.lastName)
 
   })
