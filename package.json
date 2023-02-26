@@ -11,6 +11,7 @@
   },
   "scripts": {
     "test": "npx cypress open",
+    "docker": "docker run -it -v $PWD:/e2e -w /e2e cypress/included:12.7.0 --spec cypress/e2e/*.cy.js",
     "run": "npx cypress run --spec 'cypress/e2e/elements.cy.js'"
   },
   "author": "",
